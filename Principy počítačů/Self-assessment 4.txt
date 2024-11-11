@@ -1,0 +1,36 @@
+3) Pro následující hodnoty napište jejich reprezentaci jako znaménkové číslo (a) s explicitním znaménkovým bitem, (b) v jedničkovém doplňku, (c) ve dvojkovém doplňku. Po každou hodnotu napište všechny 3 varianty její reprezentace, a výsledek vždy zapište jako 8-bitovou hodnotu ve dvojkové soustavě:
+		dvojkova		a			b			c
+10 = 		00001010		00001010		11110101		11110110
+
+0  =            00000000                00000000                11111111                00000000
+
+-3 =           -00000011 		10000011                11111100                11111101
+
+-5 =           -00000101                10000101                11111010                11111011
+
+-124 =         -01111100                11111100                10000011                10000100
+
+8) Předpokládejte následující fragmenty Python programů využívajících modul numpy. Pokud bychom po každém 
+z těchto fragmentů provedli v programu příkaz print(cislo, type(cislo)), tak co by v uvedených příkladech 
+vypsal?
+a): cislo = 5
+>>> 5 <class 'int'>
+
+b): cislo = 256
+>>> 256 <class 'int'>
+
+c): cislo = 0x4FE
+>>> 1278 <class 'int'>
+
+d): cislo = 251
+cislo = uint8(cislo)
+251 <class 'numpy.uint8'>
+
+e): cislo = 256
+cislo = uint8(cislo)
+>>> 0 <class 'numpy.uint8'>
+
+f): cislo = 0x4FE
+cislo = uint8(cislo)
+>>> 254 <class 'numpy.uint8'>
+

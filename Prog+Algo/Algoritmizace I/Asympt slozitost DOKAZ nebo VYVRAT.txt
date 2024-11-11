@@ -1,0 +1,48 @@
+a) Je-li f(n) = O(g(n)), pak g(n) = O(f(n)).
+	f = n
+	g = n^2
+	-----------
+	f = O(g)
+	ale
+	g != O(f)
+	neplati
+
+
+
+b) Pokud f(n) = O(g(n)), pak 2^f(n) = O(2^g(n)).
+	f = 2n
+	g = n
+	
+	2n <= c . n
+	... pro c >= 2 plati
+	ALE
+	2^2n <= c1.2^n
+	(2^n)^2 <= c1.2^n |:2^n
+	2^n <= c1
+	... neplatiiiii
+	
+
+
+c) Jestliže f(n) = O(g(n)), pak g(n) = Ω(f(n)).
+Ω - dolni odhad
+Když toto    f <= c.g    (I)
+
+pak       c1.f <= g      (II)
+----------------------
+(I):c    1/c.f <= g
+(II)      c1.f <= g
+pro c1 = 1/c plati ANOOOO Tiara povedalaaaa
+
+
+
+d) f(n) = O(f(n)^2)
+	
+	pro f(n) = 1/n:
+	
+	1/n <= c.(1/n)^2
+	1/n <= c.(1/n^2)  | *n^2
+	
+	n <= c
+
+	NEPLATI
+

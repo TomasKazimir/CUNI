@@ -1,0 +1,6 @@
+### RESENI:
+> Program pro uzivatelem zadane prirozene cislo `n` provadi while cyklus, dokud je `n` vetsi nez nula. \
+Podminka `if n % 1 == 1` nebude nikdy vyhodnocena jako pravdiva, nebot zbytek po deleni 1 je pro vsechna prirozena cisla roven nule. \
+Vzdy se tedy provedou prikazy v bloku `else`. Zde se vytiskne 1x hvezdicka a `n` se celociselne vydeli dvojkou (tedy se vzdy zmensi o polovinu). \
+Pocet vytisknutych hvezdicek se tak bude rovnat exponentu mocniny dvojky, ktera je vetsi nez `n` a je "nejblize" k `n`. \
+**Tento pocet se tedy da vyjadrit jako `⌈log2(n+1)⌉` pro libovolne prirozene `n`**

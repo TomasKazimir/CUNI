@@ -1,0 +1,20 @@
+Minimalni pocet hvezdicek:
+
+pokud n = 2^k potom n bude v kazdem cyklu klesat logaritmicky
+probehne tedy log2(2) + 1 cyklu => vytiskne se log2(2) + 1 hvezdicek
+
+Maximalni pocet hvezdicek:
+
+Maximalni pocet hvezdicek dostaneme, kdyz n bude klesat co mozna nejpomaleji. Tedy pokud nikdy nenastane, ze by ve dvou cyklech po sobe bylo n delitelne dvojkou a zaroven bude na zacatku algoritmu n liche.
+Tyto podminky splnuje n o 1 mensi nez nejaka mocina dvojky.
+Pokud n = 2^k - 1, potom po prvnim cyklu(n -= 1) dostaneme 
+n = 2^k - 2,
+po druhem cyklu(n //= 2) dostaneme 
+n = 2^(k-1) - 1,
+po tretim cyklu dostaneme
+n = 2^(k-1) - 2
+atd.
+Po kazdych dvou cyklech se exponent u dvojky snizi o 1.
+Nas algoritmus se zastavi ve chvili, kdy n = 2^1 - 2 = 0 (exponent bude 1), tedy po celkem 2k - 1 cyklech.
+Maximalne se tedy vytiskne k hvezdicek pro n = 2^k - 1.
+
