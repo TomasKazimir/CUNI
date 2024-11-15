@@ -1,12 +1,13 @@
 import sys
 import os
 
-from typing import List
+from typing import List, Tuple
 from time import sleep
 
-LIFE = "O"
-DEATH = " "
-
+LIFE  = "@"     # ∎
+DEATH = " "     # ·
+NUMBER_OF_SIMULATED_CYCLES = 10000
+PAUSE = .05
 
 class Board:
     def __init__(self, values: List[List]):
@@ -15,20 +16,19 @@ class Board:
         self.values = values
 
     def __repr__(self):
-        return "\n".join([" ".join(str(_) for _ in row) for row in self.values])
+        out = "#" + "#".join([" ".join(str(_) for _ in row) for row in self.values])
+        splits = out.count("#")
+        for i in range(splits):
+            out = out.replace("#", f"|\n{i:3}|", 1)
+        return out[2:] + "|"
 
 
-def read_input() -> tuple:
+def read_input() -> Tuple[int, int, int, list]:
     input_data = []
     for line in sys.stdin.readlines():
-        input_data.append(line.rstrip())
-
-    c, r = (int(_) for _ in input_data[0].split())
-    t = int(input_data[1])
-    ### CHANGE
-    # return c, r, t, input_data[2:]
-    input_data = input_data[2:]
-    return len(input_data[0]), len(input_data), t, input_data
+        input_data.append(line.rstrip().replace(" ", ""))
+    input_data.pop()
+    return len(input_data[0]), len(input_data), input_data
 
 
 def zero_board(r: int, c: int, x: str | int = 0) -> Board:
@@ -36,8 +36,9 @@ def zero_board(r: int, c: int, x: str | int = 0) -> Board:
 
 
 def pprint(x, sep_len: int = 40) -> None:
-    print("=" * sep_len)
+    print("   " + "__" * sep_len + "_")
     print(x)
+    print("   " + "‾‾" * sep_len + "‾")
 
 
 def life_or_death(state: str, n: int) -> str:
@@ -49,14 +50,14 @@ def life_or_death(state: str, n: int) -> str:
 
 
 if __name__ == "__main__":
-    col_len, row_len, n_of_sims, data = read_input()
+    col_len, row_len, data = read_input()
 
     board = zero_board(row_len, col_len, DEATH)
     for i in range(row_len):
         for j in range(col_len):
             board.values[i][j] = DEATH if data[i][j] == "." else LIFE
 
-    for _ in range(n_of_sims):
+    for t in range(NUMBER_OF_SIMULATED_CYCLES):
         new_board = zero_board(row_len, col_len, DEATH)
         for i in range(row_len):
             for j in range(col_len):
@@ -69,4 +70,5 @@ if __name__ == "__main__":
         board.values = new_board.values
         os.system("cls")
         pprint(board, sep_len=col_len)
-        sleep(0.05)
+        print(t+1)
+        sleep(PAUSE)
