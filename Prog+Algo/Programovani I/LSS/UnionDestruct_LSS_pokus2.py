@@ -39,34 +39,26 @@ def UnionDestruct(a: Prvek, b: Prvek):
     * nevytvari zadne nove prvky, vysledny seznam bude poskladany z prvku puvodnich seznamu,
     * vysledek je MNOZINA, takze se hodnoty neopakuji """
 
-    prvni = Prvek(None, None)
-    posledni = Prvek(None, None)
+    pomocny = Prvek(None, None)
+    ocas = pomocny
 
-    while a is not None and b is not None:
-        p = Prvek(None, None)
-        if a.x == b.x:
-            p.x = a.x
+    while a is not None or b is not None:
+        if a is not None and (b is None or a.x < b.x):  # pridat z Acka
+            ocas.dalsi = a
+            ocas = ocas.dalsi
+            print(ocas, a, ocas is a)
+            a = a.dalsi
+        elif b is not None and (a is None or a.x > b.x):  # pridat z Bcka
+            ocas.dalsi = b
+            ocas = ocas.dalsi
+            b = b.dalsi
+        else:  # pridat z obou
+            ocas.dalsi = a
+            ocas = ocas.dalsi
             a = a.dalsi
             b = b.dalsi
-        elif a.x < b.x:
-            p.x = a.x
-            a = a.dalsi
-        else:
-            p.x = b.x
-            b = b.dalsi
-        if prvni.dalsi is None:
-            prvni.dalsi = p
-        else:
-            posledni.dalsi = p
 
-        posledni = p
-    if a is not None:
-        posledni.dalsi = a
-    elif b is not None:
-        posledni.dalsi = b
-    if prvni.dalsi is None:
-        return posledni.dalsi
-    return prvni.dalsi
+    return pomocny.dalsi
 
 
 #################################################

@@ -39,7 +39,7 @@ class Matrix:
         if type(other) == Matrix:
             return Matrix([[sum([self.values[i][k] * other.values[k][j]
                                  for k in range(self.c)])
-                            for j in range(other.col_len)]
+                            for j in range(other.c)]
                            for i in range(self.r)])
 
         return Matrix([[self.values[i][j] * other

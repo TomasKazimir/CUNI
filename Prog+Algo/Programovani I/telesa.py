@@ -61,14 +61,14 @@ def force(B1: Body, B2: Body):
     
 
 bodies = []
-bodies.append(Body(-100, -100, velx =   0, vely = 200, mass = 30))
-bodies.append(Body(-100,  100, velx = 100, vely =   0, mass = 30))
-bodies.append(Body( 100,  100, velx =   0, vely =-100, mass = 30))
-bodies.append(Body( 100, -100, velx =-100, vely =   0, mass = 30))
+# bodies.append(Body(-100, -100, velx =   0, vely = 200, mass = 30))
+# bodies.append(Body(-100,  100, velx = 100, vely =   0, mass = 30))
+# bodies.append(Body( 100,  100, velx =   0, vely =-100, mass = 30))
+# bodies.append(Body( 100, -100, velx =-100, vely =   0, mass = 30))
 
-# bodies.append(Body(-100, -100, velx =   0, vely = 110, mass = 20))
-# bodies.append(Body( 100,  100, velx =   0, vely =   0, mass = 20))
-# bodies.append(Body(   0,    0, velx =   0, vely =-100, mass = 30))
+bodies.append(Body(-100, -100, velx =   0, vely = 110, mass = 20))
+bodies.append(Body( 100,  100, velx =   0, vely =   0, mass = 20))
+bodies.append(Body(   0,    0, velx =   0, vely =-100, mass = 30))
 
 # bodies.append(Body(   0,   0, velx =   0, vely =    0, mass = 1000, is_fixed=True))
 # bodies.append(Body(   0, 100, velx =990, vely =    0, mass =    1))
