@@ -93,11 +93,14 @@ class TreeSet:
 
     def count(self, lo: int, hi: int) -> int:
         """Returns number of values x in the tree-set such that lo <= x <= hi."""
+
         def rec_count(n) -> int:
             if n is None:
                 return 0
-            if n.val < lo or n.val > hi:
-                return 1
+            if n.val < lo:
+                return rec_count(n.right)
+            if n.val > hi:
+                return rec_count(n.left)
             return 1 + rec_count(n.left) + rec_count(n.right)
 
         return rec_count(self.root)
@@ -116,10 +119,37 @@ class TreeSet:
 
     def inorder(self):
         """Prints values in the tree-set from smallest to biggest (='inorder')."""
-        def inorder(root):
-            if root is not None:
-                inorder(root.left)
-                print(root.val, end=" ")
-                inorder(root.right)
 
-        inorder(self.root)
+        def inorder(root, s):
+            if root is not None:
+                inorder(root.left, s)
+                s.append(str(root.val))
+                inorder(root.right, s)
+            return s
+
+        return inorder(self.root, [])
+
+
+# import random
+#
+# t = TreeSet()
+# v = [i for i in range(1, 101)]
+#
+# for _ in range(100):
+#     x = random.choice(v)
+#     v.remove(x)
+#     t.add(x)
+#
+# print(*t.inorder())
+# print(t.count(20, 40))
+#
+# def print_bst(root: Node, level: int = 0, prefix: str = "Root: "):
+#     if root is not None:
+#         print(" " * (level * 4) + prefix + str(root.val))
+#         if root.left or root.right:  # Print children if they exist
+#             print_bst(root.left, level + 1, "L--- ")
+#             print_bst(root.right, level + 1, "R--- ")
+#     else:
+#         print(" " * (level * 4) + prefix + "None")
+#
+# # print_bst(t.root)
