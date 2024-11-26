@@ -1,0 +1,54 @@
+Dekompozice
+===========
+
+1) FUNKCNI (casti programu a funkce, ktere je budou realizovat):
+================================================================
+
+    - nacti_vstup()
+    - vypocitej()
+    - vytiskni_vysledek()
+
+
+2) OBJEKTOVA (funkcnosti/objekty a jejich tridy):
+=================================================
+
+    - seznam_dvojic
+      - pridej_dvojici(dvojice)
+      - najdi_sousedy(prvek)
+      ================
+      = SeznamDvojic_VListu
+
+    - seznam prvku (tech, ktere zbyva prozkoumat, tech, ktere uz zname)
+      - obsahuje(prvek)
+      - pridej(prvek)
+      - vyber()
+      ================
+      = Seznam_VListu
+      = Fronta_VListu
+
+    - ctecka
+      - precti_radek()
+      ================
+      = Ctecka_ZKonzole
+      = Ctecka_ZeStringu
+
+    - hledacka
+      - hledej(...)
+      ================
+      = Hledacka
+      = Hledacka_SCestou
+
+    - tiskarna
+      - vytiskni(co)
+      ================
+      = Tiskarna_NaKonzoli
+
+
+3) MODULARNI (do kterych souboru bude rozdelen zdrojovy kod):
+=============================================================
+
+    - seznamy
+    - ctecky
+    - hledacky
+    - tiskarny
+---------------------------------------------------------------
