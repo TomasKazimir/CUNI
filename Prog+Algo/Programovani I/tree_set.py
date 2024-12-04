@@ -129,71 +129,71 @@ class TreeSet:
 
         return inorder(self.root, [])
 
+if __name__ == "__main__":
+    import random
+    import math
 
-import random
-import math
+    t = TreeSet()
+    k = 16
+    v = [i for i in range(k)]
 
-t = TreeSet()
-k = 16
-v = [i for i in range(k)]
+    for i in range(1, round(math.log2(k))+2):
+        for j in range(k//(2*i), k, k//(2*i)):
+            t.add(v[j])
 
-for i in range(1, round(math.log2(k))+2):
-    for j in range(k//(2*i), k, k//(2*i)):
-        t.add(v[j])
+    print(*t.inorder())
+    print(t.count(20, 40))
 
-print(*t.inorder())
-print(t.count(20, 40))
+    def print_bst(root: Node, level: int = 0, prefix: str = "Root: "):
+        if root is not None:
+            print(" " * (level * 4) + prefix + str(root.val))
+            if root.left or root.right:  # Print children if they exist
+                print_bst(root.left, level + 1, "L--- ")
+                print_bst(root.right, level + 1, "R--- ")
+        else:
+            print(" " * (level * 4) + prefix + "None")
 
-def print_bst(root: Node, level: int = 0, prefix: str = "Root: "):
-    if root is not None:
-        print(" " * (level * 4) + prefix + str(root.val))
-        if root.left or root.right:  # Print children if they exist
-            print_bst(root.left, level + 1, "L--- ")
-            print_bst(root.right, level + 1, "R--- ")
-    else:
-        print(" " * (level * 4) + prefix + "None")
+    # print_bst(t.root)
 
-# print_bst(t.root)
+    def PrintTree(root):
+        def height(root):
+            return 1 + max(height(root.left), height(root.right)) if root else -1
 
-def PrintTree(root):
-    def height(root):
-        return 1 + max(height(root.left), height(root.right)) if root else -1
+        nlevels = height(root)
+        width = pow(2, nlevels + 1)
 
-    nlevels = height(root)
-    width = pow(2, nlevels + 1)
+        q = [(root, 0, width, 'c')]
+        levels = []
 
-    q = [(root, 0, width, 'c')]
-    levels = []
+        while (q):
+            node, level, x, align = q.pop(0)
+            if node:
+                if len(levels) <= level:
+                    levels.append([])
 
-    while (q):
-        node, level, x, align = q.pop(0)
-        if node:
-            if len(levels) <= level:
-                levels.append([])
+                levels[level].append([node, level, x, align])
+                seg = width // (pow(2, level + 1))
+                q.append((node.left, level + 1, x - seg, 'l'))
+                q.append((node.right, level + 1, x + seg, 'r'))
 
-            levels[level].append([node, level, x, align])
-            seg = width // (pow(2, level + 1))
-            q.append((node.left, level + 1, x - seg, 'l'))
-            q.append((node.right, level + 1, x + seg, 'r'))
+        for i, l in enumerate(levels):
+            pre = 0
+            preline = 0
+            linestr = ''
+            pstr = ''
+            seg = width // (pow(2, i + 1))
+            for n in l:
+                valstr = str(n[0].val)
+                if n[3] == 'r':
+                    linestr += ' ' * (n[2] - preline - 1 - seg - seg // 2) + '¯' * (seg + seg // 2) + '\\'
+                    preline = n[2]
+                if n[3] == 'l':
+                    linestr += ' ' * (n[2] - preline - 1) + '/' + '¯' * (seg + seg // 2)
+                    preline = n[2] + seg + seg // 2
+                pstr += ' ' * (n[2] - pre - len(valstr)) + valstr  # correct the potition acording to the number size
+                pre = n[2]
+            print(linestr)
+            print(pstr)
 
-    for i, l in enumerate(levels):
-        pre = 0
-        preline = 0
-        linestr = ''
-        pstr = ''
-        seg = width // (pow(2, i + 1))
-        for n in l:
-            valstr = str(n[0].val)
-            if n[3] == 'r':
-                linestr += ' ' * (n[2] - preline - 1 - seg - seg // 2) + '¯' * (seg + seg // 2) + '\\'
-                preline = n[2]
-            if n[3] == 'l':
-                linestr += ' ' * (n[2] - preline - 1) + '/' + '¯' * (seg + seg // 2)
-                preline = n[2] + seg + seg // 2
-            pstr += ' ' * (n[2] - pre - len(valstr)) + valstr  # correct the potition acording to the number size
-            pre = n[2]
-        print(linestr)
-        print(pstr)
-
-print_bst(t.root)
-PrintTree(t.root)
+    print_bst(t.root)
+    PrintTree(t.root)

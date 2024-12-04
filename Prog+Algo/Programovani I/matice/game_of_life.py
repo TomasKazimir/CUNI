@@ -23,7 +23,7 @@ class Board:
         return out[2:] + "|"
 
 
-def read_input() -> Tuple[int, int, int, list]:
+def read_input() -> Tuple[int, int, list]:
     input_data = []
     for line in sys.stdin.readlines():
         input_data.append(line.rstrip().replace(" ", ""))
