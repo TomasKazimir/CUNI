@@ -34,7 +34,7 @@ class TreeSet:
                     self._size += 1
                     return
                 else:
-                    n = n.right
+                    n = n.right_parent
 
     def remove(self, x: int):
         """Removes `x` from the tree-set if present."""
@@ -112,9 +112,9 @@ class TreeSet:
             if n.val == x:
                 return True
             if n.val < x:
-                n = n.right
+                n = n.right_parent
             else:
-                n = n.left
+                n = n.left_parent
         return False
 
     def inorder(self):
@@ -122,9 +122,9 @@ class TreeSet:
 
         def inorder(root, s):
             if root is not None:
-                inorder(root.left, s)
+                inorder(root.left_parent, s)
                 s.append(str(root.val))
-                inorder(root.right, s)
+                inorder(root.right_parent, s)
             return s
 
         return inorder(self.root, [])
@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
     def PrintTree(root):
         def height(root):
-            return 1 + max(height(root.left), height(root.right)) if root else -1
+            return 1 + max(height(root.left_parent), height(root.right_parent)) if root else -1
 
         nlevels = height(root)
         width = pow(2, nlevels + 1)
@@ -173,8 +173,8 @@ if __name__ == "__main__":
 
                 levels[level].append([node, level, x, align])
                 seg = width // (pow(2, level + 1))
-                q.append((node.left, level + 1, x - seg, 'l'))
-                q.append((node.right, level + 1, x + seg, 'r'))
+                q.append((node.left_parent, level + 1, x - seg, 'l'))
+                q.append((node.right_parent, level + 1, x + seg, 'r'))
 
         for i, l in enumerate(levels):
             pre = 0

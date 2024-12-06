@@ -1,0 +1,99 @@
+html, body {
+    color: lightgray;
+    background-color: #05001a;
+    margin: 0;
+}
+
+header {
+    background-color: #190c46;
+    border-bottom: 2px solid #fff200;
+
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    margin: 0;
+    width: 50%;
+    padding: 10px 0;
+    text-align: center;
+    border-right: 2px solid #fff200;
+}
+
+#navbar {
+    width: 50%;
+    background-color: #190c46;
+}
+
+#navbar ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+
+    margin: 0;
+
+    list-style: none;
+}
+
+#navbar li a {
+    color: #fff200;
+    padding: 5px 5px;
+}
+
+#navbar li a:hover {
+    background-color: red;
+
+}
+
+article h3 {
+    margin: 0;
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 63px;
+
+    background-color: #05001a;
+    text-align: center;
+    text-decoration-line: underline;
+}
+
+article > section {
+    border: 1px solid lightgray;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+pre {
+    background-color: #231948;
+    padding: 1rem 2rem;
+}
+
+ol > li > strong {
+    color: #fff771;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+}
+
+table {
+    width: 100%;
+    margin: 20px auto;
+}
+
+thead, td, th {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #231948;
+    text-align: center;
+    color: #fff771;
+}
